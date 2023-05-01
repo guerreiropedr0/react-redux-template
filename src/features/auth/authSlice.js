@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { setToken } from '../../app/tokenManager';
+import { setToken, getToken, resetToken } from '../../app/tokenManager';
 
 export const signup = createAsyncThunk('auth/signup', async (userData) => {
   const response = await fetch('http://localhost:3000/api/auth/signup', {
@@ -37,6 +37,24 @@ export const login = createAsyncThunk('auth/login', async (userData) => {
   return await response.json();
 })
 
+export const logout = createAsyncThunk('auth/logout', async () => {
+  const response = await fetch('http://localhost:3000/api/auth/logout', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: getToken(),
+    },
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message);
+  }
+
+  resetToken();
+  return await response.json();
+})
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -71,6 +89,19 @@ const authSlice = createSlice({
       })
       .addCase(login.rejected, (state, action) => {
         state.user = null;
+        state.loading = false;
+        state.errors = action.error.message.split(',');
+      })
+
+      .addCase(logout.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.user = null;
+        state.loading = false;
+        state.errors = null;
+      })
+      .addCase(logout.rejected, (state, action) => {
         state.loading = false;
         state.errors = action.error.message.split(',');
       })
