@@ -30,7 +30,6 @@ export const login = createAsyncThunk('auth/login', async (userData) => {
 
   if (!response.ok) {
     const errorData = await response.text();
-    console.log(errorData);
     throw new Error(errorData);
   }
 
