@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { setToken } from '../../app/tokenManager';
 
 export const signup = createAsyncThunk('auth/signup', async (userData) => {
   const response = await fetch('http://localhost:3000/api/auth/signup', {
@@ -14,6 +15,7 @@ export const signup = createAsyncThunk('auth/signup', async (userData) => {
     throw new Error(errorData.errors);
   }
 
+  setToken(response.headers.get("Authorization"));
   return await response.json();
 });
 
