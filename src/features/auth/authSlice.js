@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { setToken, getToken, resetToken } from '../../app/tokenManager';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export const signup = createAsyncThunk('auth/signup', async (userData) => {
-  const response = await fetch('http://localhost:3000/api/auth/signup', {
+  const response = await fetch(`${API_BASE_URL}auth/signup`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -20,7 +22,7 @@ export const signup = createAsyncThunk('auth/signup', async (userData) => {
 });
 
 export const login = createAsyncThunk('auth/login', async (userData) => {
-  const response = await fetch('http://localhost:3000/api/auth/login', {
+  const response = await fetch(`${API_BASE_URL}auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -38,7 +40,7 @@ export const login = createAsyncThunk('auth/login', async (userData) => {
 })
 
 export const logout = createAsyncThunk('auth/logout', async () => {
-  const response = await fetch('http://localhost:3000/api/auth/logout', {
+  const response = await fetch(`${API_BASE_URL}auth/logout`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
