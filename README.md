@@ -1,46 +1,53 @@
-# Getting Started with Create React App and Redux
+# React-Redux Template
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+This is a React-Redux template that communicates with an API for authentication. It provides a basic setup for creating a React application with Redux state management and authentication handling.
 
-## Available Scripts
+The API template used for this project is available at [api-authentication](https://github.com/guerreiropedr0/api-authentication).
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- React 18
+- React-Redux 8
+- Authentication handling with JWT
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To install the dependencies, run:
 
-### `npm test`
+```
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+To start the development server, run:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To create a production build, run:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm build
+```
 
-### `npm run eject`
+To run the tests, run:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm run test
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Configuration
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Before running the application, you need to set the environment variables for the API base URL. You can do this by creating a `.env` file at the root of the project with the following values:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+REACT_APP_API_BASE_URL=<API_BASE_URL>
+```
 
-## Learn More
+Replace `<API_BASE_URL>` with the base URL of your API.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
