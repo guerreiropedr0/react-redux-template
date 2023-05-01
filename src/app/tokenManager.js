@@ -12,4 +12,9 @@ const getToken = () => {
   }
 }
 
-export { setToken, getToken };
+const resetToken = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("lastLoginTime");
+}
+
+export { setToken, getToken, resetToken };
